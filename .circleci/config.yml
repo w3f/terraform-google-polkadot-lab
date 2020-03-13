@@ -1,0 +1,21 @@
+version: 2
+
+jobs:
+  integraitonTests:
+    docker:
+      - image: web3f/ci-commons:v2.0.1
+    steps:
+      - checkout
+      - run:
+          description: run integration tests
+          command: |
+            ./scripts/integration-tests.sh
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - integrationTests:
+          filters:
+            tags:
+              only: /.*/
