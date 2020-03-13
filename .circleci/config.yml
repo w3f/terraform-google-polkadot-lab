@@ -1,9 +1,9 @@
 version: 2
 
 jobs:
-  integraitonTests:
+  integrationTests:
     docker:
-      - image: web3f/ci-commons:v2.0.1
+      - image: golang:1.14.0-alpine3.11
     steps:
       - checkout
       - run:
