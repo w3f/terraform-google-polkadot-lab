@@ -14,6 +14,8 @@ import (
 func TestLabClusterCreation(t *testing.T) {
 	t.Parallel()
 
+	nodeCount := 1
+
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../",
 
@@ -21,7 +23,7 @@ func TestLabClusterCreation(t *testing.T) {
 		Vars: map[string]interface{}{
 			"cluster_name": "test",
 			"machine_type": "n1-standard-2",
-			"node_count":   1,
+			"node_count":   nodeCount,
 		},
 
 		// Disable colors in Terraform commands so its easier to parse stdout/stderr
@@ -56,5 +58,5 @@ func TestLabClusterCreation(t *testing.T) {
 
 	nodes := k8s.GetNodes(t, options)
 
-	assert.Equal(t, len(nodes), 1)
+	assert.Equal(t, len(nodes), nodeCount)
 }
