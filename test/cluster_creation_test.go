@@ -19,6 +19,7 @@ func TestLabClusterCreation(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
+			"cluster_name": "test",
 			"machine_type": "n1-standard-2",
 			"node_count":   1,
 		},
