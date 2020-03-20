@@ -12,7 +12,7 @@ resource "random_id" "password" {
 
 resource "google_container_cluster" "primary" {
   name     = var.cluster_name
-  location = var.location
+  location = "${var.region}-${var.zone}"
 
   min_master_version = var.k8s_version
 
@@ -38,7 +38,7 @@ resource "google_container_cluster" "primary" {
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "${var.cluster_name}-pool"
-  location   = var.location
+  location = "${var.region}-${var.zone}"
   cluster    = "${google_container_cluster.primary.name}"
   node_count = var.node_count
 
@@ -68,5 +68,5 @@ resource "google_compute_subnetwork" "subnetwork" {
   name          = var.cluster_name
   ip_cidr_range = "10.2.0.0/16"
   network       = "${google_compute_network.network.self_link}"
-  region        = var.location
+  region        = var.region
 }

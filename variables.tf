@@ -2,8 +2,12 @@ variable "cluster_name" {
   default = "polkadot-lab"
 }
 
-variable "location" {
+variable "region" {
   default = "europe-west1"
+}
+
+variable "zone" {
+  default = "b"
 }
 
 variable "node_count" {
