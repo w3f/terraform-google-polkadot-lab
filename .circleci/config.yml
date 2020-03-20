@@ -3,7 +3,7 @@ version: 2
 jobs:
   integrationTests:
     docker:
-      - image: golang:1.14.0-alpine3.11
+      - image: web3f/terratest:v0.1.0
     steps:
       - checkout
       - run:
