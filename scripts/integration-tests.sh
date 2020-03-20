@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 credentials=$(pwd)/credentials
 echo ${GOOGLE_APPLICATION_CREDENTIALS_CONTENT} > $credentials
