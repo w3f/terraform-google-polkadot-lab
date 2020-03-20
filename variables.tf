@@ -3,7 +3,7 @@ variable "cluster_name" {
 }
 
 variable "region" {
-  default = "europe-west1"
+  default = "europe-west4"
 }
 
 variable "zone" {
