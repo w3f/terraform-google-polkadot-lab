@@ -3,11 +3,11 @@ variable "cluster_name" {
 }
 
 variable "region" {
-  default = "europe-west4"
+  default = "europe-west6"
 }
 
 variable "zone" {
-  default = "b"
+  default = "a"
 }
 
 variable "node_count" {
@@ -19,7 +19,7 @@ variable "machine_type" {
 }
 
 variable "k8s_version" {
-  default = "1.15.9-gke.12"
+  default = "1.15.11-gke.5"
 }
 
 variable "image_type" {
