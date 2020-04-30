@@ -17,8 +17,8 @@ resource "google_container_cluster" "primary" {
   min_master_version = var.k8s_version
 
   master_auth {
-    username = "${random_id.username.hex}"
-    password = "${random_id.password.hex}"
+    username = random_id.username.hex
+    password = random_id.password.hex
 
     client_certificate_config {
       issue_client_certificate = false
@@ -29,8 +29,8 @@ resource "google_container_cluster" "primary" {
     ignore_changes = ["master_auth"]
   }
 
-  network = "${google_compute_network.network.self_link}"
-  subnetwork = "${google_compute_subnetwork.subnetwork.self_link}"
+  network = google_compute_network.network.self_link
+  subnetwork = google_compute_subnetwork.subnetwork.self_link
 
   remove_default_node_pool = true
   initial_node_count = 1
@@ -39,7 +39,7 @@ resource "google_container_cluster" "primary" {
 resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "${var.cluster_name}-pool"
   location = "${var.region}-${var.zone}"
-  cluster    = "${google_container_cluster.primary.name}"
+  cluster    = google_container_cluster.primary.name
   node_count = var.node_count
 
   management {
@@ -67,6 +67,6 @@ resource "google_compute_network" "network" {
 resource "google_compute_subnetwork" "subnetwork" {
   name          = var.cluster_name
   ip_cidr_range = "10.2.0.0/16"
-  network       = "${google_compute_network.network.self_link}"
+  network       = google_compute_network.network.self_link
   region        = var.region
 }
