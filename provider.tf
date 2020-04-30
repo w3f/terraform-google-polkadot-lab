@@ -1,5 +1,5 @@
 provider "google" {
-  project     = "polkadot-benchmarks"
+  project     = "development-252112"
   version     = "~>3.13"
 }
 
