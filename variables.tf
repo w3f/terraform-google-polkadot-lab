@@ -3,11 +3,11 @@ variable "cluster_name" {
 }
 
 variable "region" {
-  default = "europe-west6"
+  default = "europe-west4"
 }
 
 variable "zone" {
-  default = "a"
+  default = "b"
 }
 
 variable "node_count" {
