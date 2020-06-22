@@ -15,7 +15,7 @@ variable "node_count" {
 }
 
 variable "machine_type" {
-  default = "n2d-standard-224"
+  default = "n2d-standard-80"
 }
 
 variable "k8s_version" {
